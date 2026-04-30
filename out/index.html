@@ -1,0 +1,517 @@
+<!DOCTYPE html><html lang="en" class="__variable_6b3ed8 __variable_66e1ae"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/68180864d7f93f02.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/eaead17c7dbfcd5d-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/_next/static/css/bec96f75702118f4.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-30cda9b57dcecb8f.js"/><script src="/_next/static/chunks/fd9d1056-13baa9b2029d31fe.js" async=""></script><script src="/_next/static/chunks/117-f54d77e4ee3f9c39.js" async=""></script><script src="/_next/static/chunks/main-app-c5a0289e56b13f94.js" async=""></script><script src="/_next/static/chunks/app/page-bb644b227a788b66.js" async=""></script><title>Warm Studio — Hot Yoga &amp; Infrared</title><meta name="description" content="Infrared-heated yoga studio in Scottsdale. Hot Vinyasa, Yin, Power, Sculpt &amp; Restore classes. Experience the warmth."/><meta name="next-size-adjust"/><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body><style>
+  :root {
+    --wm-bg: #FFF8F0;
+    --wm-surface: #FFF0E4;
+    --wm-card: #FFFFFF;
+    --wm-primary: #C2692A;
+    --wm-primary-dark: #A0521C;
+    --wm-warm: #E8956B;
+    --wm-text: #2C1A0E;
+    --wm-muted: #8B6B55;
+    --wm-border: rgba(194,105,42,0.15);
+    --font-display: var(--font-playfair), 'Playfair Display', serif;
+    --font-body: var(--font-nunito), 'Nunito Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--wm-bg); color: var(--wm-text); overflow-x: hidden; }
+
+  /* NAV */
+  .wm-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 70px;
+    transition: background 0.35s, box-shadow 0.35s;
+  }
+  .wm-nav.scrolled {
+    background: rgba(255,248,240,0.97);
+    box-shadow: 0 1px 24px rgba(194,105,42,0.10);
+    backdrop-filter: blur(12px);
+  }
+  .wm-nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--wm-primary);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .wm-nav-links { display: flex; gap: 2rem; align-items: center; }
+  .wm-nav-links a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--wm-text);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+  .wm-nav-links a:hover { opacity: 1; }
+  .wm-btn-nav {
+    background: var(--wm-primary);
+    color: #fff;
+    padding: 0.55rem 1.4rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .wm-btn-nav:hover { background: var(--wm-primary-dark); transform: translateY(-1px); }
+
+  /* HERO — SPLIT LAYOUT */
+  .wm-hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    overflow: hidden;
+  }
+  .wm-hero-video-side {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+  }
+  .wm-hero-video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .wm-hero-video-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(44,26,14,0.18) 0%, rgba(44,26,14,0.08) 70%, transparent 100%);
+  }
+  /* temperature badge floating on video */
+  .wm-temp-badge {
+    position: absolute;
+    bottom: 2.5rem; left: 2.5rem;
+    background: rgba(194,105,42,0.92);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .wm-temp-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #FFD4A8;
+    animation: wm-pulse 2s infinite;
+  }
+  @keyframes wm-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  /* HERO RIGHT SIDE — copy */
+  .wm-hero-copy-side {
+    background: var(--wm-bg);
+    display: flex; align-items: center;
+    padding: 7rem 4rem 4rem 4rem;
+  }
+  .wm-hero-copy { max-width: 460px; }
+  .wm-hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--wm-surface);
+    border: 1px solid var(--wm-border);
+    color: var(--wm-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+  .wm-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--wm-text);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .wm-hero-title em {
+    font-style: italic;
+    color: var(--wm-primary);
+  }
+  .wm-hero-sub {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--wm-muted);
+    margin-bottom: 2.5rem;
+  }
+  .wm-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .wm-btn-primary {
+    background: var(--wm-primary);
+    color: #fff;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    border: none; cursor: pointer;
+  }
+  .wm-btn-primary:hover { background: var(--wm-primary-dark); transform: translateY(-2px); }
+  .wm-btn-outline {
+    background: transparent;
+    color: var(--wm-text);
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1.5px solid rgba(44,26,14,0.2);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .wm-btn-outline:hover { border-color: var(--wm-primary); color: var(--wm-primary); }
+
+  /* HEAT INDICATOR ROW */
+  .wm-heat-row {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--wm-border);
+    display: flex; gap: 2rem;
+  }
+  .wm-heat-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .wm-heat-value {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--wm-primary);
+  }
+  .wm-heat-label {
+    font-size: 0.75rem;
+    color: var(--wm-muted);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 2rem; }
+  .wm-section-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--wm-primary);
+    margin-bottom: 0.75rem;
+  }
+  .wm-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--wm-text);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .wm-section-sub {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--wm-muted);
+    max-width: 560px;
+  }
+
+  /* BENEFITS */
+  .wm-benefits-section { background: var(--wm-surface); }
+  .wm-benefits-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .wm-benefits-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  }
+  .wm-benefit-card {
+    background: var(--wm-card);
+    border: 1px solid var(--wm-border);
+    border-radius: 8px;
+    padding: 1.75rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .wm-benefit-card:hover { box-shadow: 0 8px 32px rgba(194,105,42,0.10); transform: translateY(-3px); }
+  .wm-benefit-icon {
+    width: 44px; height: 44px;
+    background: var(--wm-surface);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    color: var(--wm-primary);
+    font-size: 1.2rem;
+  }
+  .wm-benefit-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--wm-text);
+    margin-bottom: 0.5rem;
+  }
+  .wm-benefit-desc { font-size: 0.9rem; line-height: 1.65; color: var(--wm-muted); }
+
+  /* CLASSES */
+  .wm-classes-section { background: var(--wm-bg); }
+  .wm-classes-inner { max-width: 1200px; margin: 0 auto; }
+  .wm-classes-header { text-align: center; margin-bottom: 3.5rem; }
+  .wm-classes-header .wm-section-sub { margin: 0 auto; text-align: center; }
+  .wm-classes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .wm-class-card {
+    background: var(--wm-card);
+    border: 1px solid var(--wm-border);
+    border-radius: 10px;
+    padding: 2rem;
+    position: relative;
+    transition: box-shadow 0.25s, transform 0.25s;
+    overflow: hidden;
+  }
+  .wm-class-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--wm-primary);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .wm-class-card:hover { box-shadow: 0 12px 40px rgba(194,105,42,0.12); transform: translateY(-4px); }
+  .wm-class-card:hover::before { opacity: 1; }
+  .wm-class-meta {
+    display: flex; gap: 0.6rem; margin-bottom: 1rem; flex-wrap: wrap;
+  }
+  .wm-class-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 3px;
+  }
+  .wm-badge-temp {
+    background: rgba(194,105,42,0.1);
+    color: var(--wm-primary);
+  }
+  .wm-badge-dur {
+    background: var(--wm-surface);
+    color: var(--wm-muted);
+  }
+  .wm-class-name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--wm-text);
+    margin-bottom: 0.75rem;
+  }
+  .wm-class-desc { font-size: 0.9rem; line-height: 1.65; color: var(--wm-muted); }
+
+  /* TEMP BANNER */
+  .wm-temp-banner {
+    background: var(--wm-primary);
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    overflow: hidden;
+  }
+  .wm-temp-banner span { opacity: 0.85; }
+  .wm-temp-banner strong { opacity: 1; font-weight: 800; }
+
+  /* STATS */
+  .wm-stats-section {
+    background: var(--wm-text);
+    padding: 5rem 2rem;
+  }
+  .wm-stats-inner {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2rem; text-align: center;
+  }
+  .wm-stat-value {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--wm-warm);
+    margin-bottom: 0.4rem;
+  }
+  .wm-stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,248,240,0.6);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* PRICING */
+  .wm-pricing-section { background: var(--wm-surface); }
+  .wm-pricing-inner { max-width: 1100px; margin: 0 auto; }
+  .wm-pricing-header { text-align: center; margin-bottom: 3.5rem; }
+  .wm-pricing-header .wm-section-sub { margin: 0 auto; }
+  .wm-pricing-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .wm-price-card {
+    background: var(--wm-card);
+    border: 1.5px solid var(--wm-border);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: box-shadow 0.25s, transform 0.25s;
+  }
+  .wm-price-card.highlight {
+    border-color: var(--wm-primary);
+    box-shadow: 0 0 0 3px rgba(194,105,42,0.08);
+  }
+  .wm-price-card:hover { box-shadow: 0 12px 40px rgba(194,105,42,0.14); transform: translateY(-4px); }
+  .wm-popular-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--wm-primary);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.9rem;
+    border-radius: 20px;
+  }
+  .wm-price-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--wm-text);
+    margin-bottom: 1rem;
+  }
+  .wm-price-amount {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--wm-primary);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .wm-price-period { font-size: 0.85rem; color: var(--wm-muted); margin-bottom: 1.75rem; }
+  .wm-price-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+  .wm-price-features li {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    font-size: 0.9rem; color: var(--wm-muted); line-height: 1.5;
+  }
+  .wm-check { color: var(--wm-primary); font-weight: 700; flex-shrink: 0; }
+  .wm-price-cta {
+    display: block; text-align: center;
+    padding: 0.85rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .wm-price-card.highlight .wm-price-cta {
+    background: var(--wm-primary); color: #fff;
+  }
+  .wm-price-card.highlight .wm-price-cta:hover { background: var(--wm-primary-dark); }
+  .wm-price-card:not(.highlight) .wm-price-cta {
+    border: 1.5px solid rgba(44,26,14,0.2); color: var(--wm-text);
+  }
+  .wm-price-card:not(.highlight) .wm-price-cta:hover { border-color: var(--wm-primary); color: var(--wm-primary); }
+
+  /* CTA SECTION */
+  .wm-cta-section {
+    background: var(--wm-primary);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+  .wm-cta-inner { max-width: 600px; margin: 0 auto; }
+  .wm-cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+  .wm-cta-sub { font-size: 1.05rem; color: rgba(255,248,240,0.8); margin-bottom: 2.5rem; line-height: 1.7; }
+  .wm-btn-light {
+    background: #fff;
+    color: var(--wm-primary);
+    padding: 1rem 2.5rem;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wm-btn-light:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+  /* FOOTER */
+  .wm-footer {
+    background: var(--wm-text);
+    color: rgba(255,248,240,0.7);
+    padding: 3.5rem 2rem 2rem;
+  }
+  .wm-footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+  }
+  .wm-footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--wm-warm);
+    margin-bottom: 0.75rem;
+  }
+  .wm-footer-tagline { font-size: 0.9rem; line-height: 1.6; max-width: 300px; }
+  .wm-footer-h { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,248,240,0.4); margin-bottom: 1rem; }
+  .wm-footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .wm-footer-links a { color: rgba(255,248,240,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .wm-footer-links a:hover { color: var(--wm-warm); }
+  .wm-footer-bottom {
+    max-width: 1200px; margin: 2.5rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,248,240,0.1);
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 0.8rem; color: rgba(255,248,240,0.4);
+    flex-wrap: wrap; gap: 0.5rem;
+  }
+  .wm-footer-brand { color: var(--wm-warm); font-weight: 700; text-decoration: none; }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .wm-hero { grid-template-columns: 1fr; }
+    .wm-hero-video-side { min-height: 55vw; max-height: 60vh; }
+    .wm-hero-copy-side { padding: 3.5rem 1.5rem; }
+    .wm-benefits-inner { grid-template-columns: 1fr; }
+    .wm-classes-grid { grid-template-columns: 1fr; }
+    .wm-pricing-grid { grid-template-columns: 1fr; }
+    .wm-stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .wm-footer-inner { grid-template-columns: 1fr; }
+    .wm-nav-links { display: none; }
+    .wm-temp-banner { flex-direction: column; gap: 0.5rem; }
+  }
+</style><nav class="wm-nav"><a href="#" class="wm-nav-logo">Warm Studio</a><div class="wm-nav-links"><a href="#classes">Classes</a><a href="#benefits">Why Heat</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a><a href="#intro" class="wm-btn-nav">Try a Class</a></div></nav><section id="intro" class="wm-hero"><div class="wm-hero-video-side"><video class="wm-hero-video" autoPlay="" muted="" loop="" playsInline="" poster="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&amp;q=80"><source src="https://assets.mixkit.co/videos/preview/mixkit-woman-doing-yoga-in-a-studio-32874-large.mp4" type="video/mp4"/></video><div class="wm-hero-video-overlay"></div><div class="wm-temp-badge"><span class="wm-temp-dot"></span>Studio: 88–95°F</div></div><div class="wm-hero-copy-side"><div class="wm-hero-copy"><div class="wm-hero-tag">🔥<!-- --> Infrared-Heated Yoga</div><h1 class="wm-hero-title">Feel the <em>heat.</em><br/>Find yourself.</h1><p class="wm-hero-sub">Warm Studio brings together the ancient power of yoga and modern infrared heat technology — for deeper flexibility, real detoxification, and a practice that transforms more than just your body.</p><div class="wm-hero-actions"><a href="#pricing" class="wm-btn-primary">Try Your First Class</a><a href="#classes" class="wm-btn-outline">See Schedule</a></div><div class="wm-heat-row"><div class="wm-heat-item"><span class="wm-heat-value">95°F</span><span class="wm-heat-label">Studio Temperature</span></div><div class="wm-heat-item"><span class="wm-heat-value">60 min</span><span class="wm-heat-label">Average Class Length</span></div><div class="wm-heat-item"><span class="wm-heat-value">12+</span><span class="wm-heat-label">Class Styles</span></div><div class="wm-heat-item"><span class="wm-heat-value">7 Days</span><span class="wm-heat-label">Week Schedule</span></div></div></div></div></section><div class="wm-temp-banner"><span><strong>Hot Vinyasa</strong> — 95°F</span><span><strong>Infrared Yin</strong> — 88°F</span><span><strong>Hot Power</strong> — 95°F</span><span><strong>Warm Restore</strong> — 85°F</span></div><section id="benefits" class="wm-benefits-section"><div class="wm-benefits-inner"><div class="reveal"><span class="wm-section-tag">Why the Heat Works</span><h2 class="wm-section-title">Science behind<br/>the warmth</h2><p class="wm-section-sub">Infrared heat is different from conventional heat. It radiates directly into your body — not just the air around you — activating cellular repair, deepening flexibility, and creating a meditative warmth that transforms every class.</p></div><div class="wm-benefits-grid"><div class="wm-benefit-card reveal" style="transition-delay:0ms"><div class="wm-benefit-icon">🔥</div><div class="wm-benefit-title">Deeper Flexibility</div><p class="wm-benefit-desc">Infrared heat relaxes muscle fibre at a cellular level — you can go deeper, safer, and recover faster than in any unheated practice.</p></div><div class="wm-benefit-card reveal" style="transition-delay:80ms"><div class="wm-benefit-icon">💧</div><div class="wm-benefit-title">Detoxification</div><p class="wm-benefit-desc">Far-infrared wavelengths penetrate 2–3 inches below the skin surface, releasing toxins stored in fat cells through sweat.</p></div><div class="wm-benefit-card reveal" style="transition-delay:160ms"><div class="wm-benefit-icon">🌿</div><div class="wm-benefit-title">Caloric Burn</div><p class="wm-benefit-desc">A single 60-minute hot yoga session can burn 400–600 calories. The heat elevates heart rate equivalent to moderate cardio exercise.</p></div><div class="wm-benefit-card reveal" style="transition-delay:240ms"><div class="wm-benefit-icon">🧘</div><div class="wm-benefit-title">Stress Relief</div><p class="wm-benefit-desc">Heat triggers parasympathetic nervous system response. Students consistently report better sleep, reduced anxiety, and mental clarity.</p></div></div></div></section><section class="wm-stats-section"><div class="wm-stats-inner"><div class="reveal" style="transition-delay:0ms"><div class="wm-stat-value">95°F</div><div class="wm-stat-label">Studio Temperature</div></div><div class="reveal" style="transition-delay:80ms"><div class="wm-stat-value">60 min</div><div class="wm-stat-label">Average Class Length</div></div><div class="reveal" style="transition-delay:160ms"><div class="wm-stat-value">12+</div><div class="wm-stat-label">Class Styles</div></div><div class="reveal" style="transition-delay:240ms"><div class="wm-stat-value">7 Days</div><div class="wm-stat-label">Week Schedule</div></div></div></section><section id="classes" class="wm-classes-section"><div class="wm-classes-inner"><div class="wm-classes-header reveal"><span class="wm-section-tag">What We Offer</span><h2 class="wm-section-title">Our class formats</h2><p class="wm-section-sub">From fast-moving power flows to deep restorative holds — every format is practised in our perfectly calibrated infrared studio.</p></div><div class="wm-classes-grid"><div class="wm-class-card reveal" style="transition-delay:0ms"><div class="wm-class-meta"><span class="wm-class-badge wm-badge-temp">95°F</span><span class="wm-class-badge wm-badge-dur">60 min</span></div><div class="wm-class-name">Hot Vinyasa Flow</div><p class="wm-class-desc">A breath-linked flow sequence in our infrared-heated room. Build heat from the inside out — the warmth opens tissue and deepens every pose.</p></div><div class="wm-class-card reveal" style="transition-delay:60ms"><div class="wm-class-meta"><span class="wm-class-badge wm-badge-temp">88°F</span><span class="wm-class-badge wm-badge-dur">75 min</span></div><div class="wm-class-name">Infrared Yin</div><p class="wm-class-desc">Long-held passive poses with far-infrared radiant heat. Targets deep connective tissue, hips, and the spine. Profoundly restorative.</p></div><div class="wm-class-card reveal" style="transition-delay:120ms"><div class="wm-class-meta"><span class="wm-class-badge wm-badge-temp">95°F</span><span class="wm-class-badge wm-badge-dur">60 min</span></div><div class="wm-class-name">Hot Power</div><p class="wm-class-desc">Athletic sequencing, arm balances, inversions, and peak poses — all in the heat. For practitioners ready to push further.</p></div><div class="wm-class-card reveal" style="transition-delay:180ms"><div class="wm-class-meta"><span class="wm-class-badge wm-badge-temp">85°F</span><span class="wm-class-badge wm-badge-dur">60 min</span></div><div class="wm-class-name">Warm Restore</div><p class="wm-class-desc">Supported restorative postures with props, bolsters, and blankets. Perfect for recovery, stress relief, or your first warm class.</p></div><div class="wm-class-card reveal" style="transition-delay:240ms"><div class="wm-class-meta"><span class="wm-class-badge wm-badge-temp">90°F</span><span class="wm-class-badge wm-badge-dur">45 min</span></div><div class="wm-class-name">Morning Flow</div><p class="wm-class-desc">A shorter, energising sequence designed to wake the body. Starts slow, finishes strong. Offered daily at 6 AM and 7 AM.</p></div><div class="wm-class-card reveal" style="transition-delay:300ms"><div class="wm-class-meta"><span class="wm-class-badge wm-badge-temp">88°F</span><span class="wm-class-badge wm-badge-dur">60 min</span></div><div class="wm-class-name">Sculpt &amp; Flow</div><p class="wm-class-desc">Yoga postures fused with light weights and toning intervals. Builds lean strength while keeping the meditative quality of a yoga class.</p></div></div></div></section><section id="pricing" class="wm-pricing-section"><div class="wm-pricing-inner"><div class="wm-pricing-header reveal"><span class="wm-section-tag">Membership</span><h2 class="wm-section-title">Simple, honest pricing</h2><p class="wm-section-sub">Your first class is on us — then choose the plan that matches your practice.</p></div><div class="wm-pricing-grid"><div class="wm-price-card reveal" style="transition-delay:0ms"><div class="wm-price-name">Drop-In</div><div class="wm-price-amount">$28</div><div class="wm-price-period">single class</div><ul class="wm-price-features"><li><span class="wm-check">✓</span>Any class format</li><li><span class="wm-check">✓</span>All temperatures</li><li><span class="wm-check">✓</span>Mat &amp; towel rental available</li><li><span class="wm-check">✓</span>Online booking</li></ul><a href="#intro" class="wm-price-cta">Get Started</a></div><div class="wm-price-card reveal highlight" style="transition-delay:100ms"><span class="wm-popular-badge">Most Popular</span><div class="wm-price-name">Unlimited</div><div class="wm-price-amount">$149</div><div class="wm-price-period">per month</div><ul class="wm-price-features"><li><span class="wm-check">✓</span>Unlimited classes</li><li><span class="wm-check">✓</span>All formats &amp; temperatures</li><li><span class="wm-check">✓</span>Priority booking</li><li><span class="wm-check">✓</span>One free guest pass / month</li><li><span class="wm-check">✓</span>Member events</li></ul><a href="#intro" class="wm-price-cta">Get Started</a></div><div class="wm-price-card reveal" style="transition-delay:200ms"><div class="wm-price-name">Class Pack</div><div class="wm-price-amount">$199</div><div class="wm-price-period">10 classes · 90 days</div><ul class="wm-price-features"><li><span class="wm-check">✓</span>10 classes to use</li><li><span class="wm-check">✓</span>Any format</li><li><span class="wm-check">✓</span>90-day validity</li><li><span class="wm-check">✓</span>Shareable with family</li><li><span class="wm-check">✓</span>No expiry extensions</li></ul><a href="#intro" class="wm-price-cta">Get Started</a></div></div></div></section><section class="wm-cta-section"><div class="wm-cta-inner"><h2 class="wm-cta-title reveal">Your first class is free</h2><p class="wm-cta-sub reveal">No commitment. No experience required. Just show up — we&#x27;ll take care of the rest. Mats, towels, and water available in-studio.</p><a href="#contact" class="wm-btn-light reveal">Claim Your Free Class</a></div></section><footer id="contact" class="wm-footer"><div class="wm-footer-inner"><div><div class="wm-footer-logo">Warm Studio</div><p class="wm-footer-tagline">7014 E Camelback Rd, Scottsdale, AZ 85251<br/>(480) 555-0193<br/>hello@warmstudio.com</p></div><div><div class="wm-footer-h">Studio</div><ul class="wm-footer-links"><li><a href="#classes">Class Schedule</a></li><li><a href="#benefits">Why Infrared</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#">Teacher Training</a></li></ul></div><div><div class="wm-footer-h">Info</div><ul class="wm-footer-links"><li><a href="#">New Students</a></li><li><a href="#">FAQs</a></li><li><a href="#">Gift Cards</a></li><li><a href="#">Privacy Policy</a></li></ul></div></div><div class="wm-footer-bottom"><span>© <!-- -->2026<!-- --> Warm Studio. All rights reserved.</span><span>Powered by <a href="https://koriva.com" class="wm-footer-brand">Koriva</a></span></div></footer><script src="/_next/static/chunks/webpack-30cda9b57dcecb8f.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/_next/static/media/68180864d7f93f02.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/_next/static/media/eaead17c7dbfcd5d-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n3:HL[\"/_next/static/css/bec96f75702118f4.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"4:I[2846,[],\"\"]\n6:I[9107,[],\"ClientPageRoot\"]\n7:I[552,[\"931\",\"static/chunks/app/page-bb644b227a788b66.js\"],\"default\",1]\n8:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\nb:I[1060,[],\"\"]\nc:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L4\",null,{\"buildId\":\"4A-GlhewfyxY4TRapUOr7\",\"assetPrefix\":\"\",\"urlParts\":[\"\",\"\"],\"initialTree\":[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"__PAGE__\",{},[[\"$L5\",[\"$\",\"$L6\",null,{\"props\":{\"params\":{},\"searchParams\":{}},\"Component\":\"$7\"}],null],null],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/bec96f75702118f4.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"__variable_6b3ed8 __variable_66e1ae\",\"children\":[\"$\",\"body\",null,{\"children\":[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}]}]}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$La\"],\"globalErrorComponent\":\"$b\",\"missingSlots\":\"$Wc\"}]\n"])</script><script>self.__next_f.push([1,"a:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Warm Studio — Hot Yoga \u0026 Infrared\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"Infrared-heated yoga studio in Scottsdale. Hot Vinyasa, Yin, Power, Sculpt \u0026 Restore classes. Experience the warmth.\"}],[\"$\",\"meta\",\"4\",{\"name\":\"next-size-adjust\"}]]\n5:null\n"])</script></body></html>
