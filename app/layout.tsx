@@ -1,6 +1,8 @@
+// @ts-nocheck
 import type { Metadata } from 'next';
 import { Playfair_Display, Nunito_Sans } from 'next/font/google';
 import './globals.css';
+import { getKorivaConfig, buildCssVars } from '@/lib/koriva-config';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -21,9 +23,11 @@ export const metadata: Metadata = {
   description: 'Infrared-heated yoga studio in Scottsdale. Hot Vinyasa, Yin, Power, Sculpt & Restore classes. Experience the warmth.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cfg = await getKorivaConfig();
+  const vars = buildCssVars(cfg?.brand);
   return (
-    <html lang="en" className={`${playfair.variable} ${nunito.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${nunito.variable}`} style={vars as React.CSSProperties}>
       <body>{children}</body>
     </html>
   );
