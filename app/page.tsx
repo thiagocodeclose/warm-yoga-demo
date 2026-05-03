@@ -599,7 +599,7 @@ export default function WarmPage() {
             <div className="wm-hero-tag">
               {ICONS.fire} Infrared-Heated Yoga
             </div>
-            <h1 className="wm-hero-title">
+            <h1 data-cg-el="hero_headline_1" className="wm-hero-title">
               Feel the <em>heat.</em><br />
               Find yourself.
             </h1>
