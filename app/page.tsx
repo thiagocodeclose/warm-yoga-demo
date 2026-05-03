@@ -603,12 +603,12 @@ export default function WarmPage() {
               Feel the <em>heat.</em><br />
               Find yourself.
             </h1>
-            <p className="wm-hero-sub">
+            <p data-cg-el="hero_subtitle" className="wm-hero-sub">
               Warm Studio brings together the ancient power of yoga and modern infrared heat technology — for deeper flexibility, real detoxification, and a practice that transforms more than just your body.
             </p>
             <div className="wm-hero-actions">
-              <a href="#pricing" className="wm-btn-primary">Try Your First Class</a>
-              <a href="#classes" className="wm-btn-outline">See Schedule</a>
+              <a data-cg-el="hero_cta_primary" href="#pricing" className="wm-btn-primary">Try Your First Class</a>
+              <a data-cg-el="hero_cta_secondary" href="#classes" className="wm-btn-outline">See Schedule</a>
             </div>
             <div className="wm-heat-row">
               {siteData.stats.map((s) => (
