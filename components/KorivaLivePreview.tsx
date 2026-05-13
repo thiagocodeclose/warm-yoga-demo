@@ -5,11 +5,14 @@ import { createPortal } from "react-dom";
 declare global {
   interface Window {
     __KORIVA_ANIM_OBSERVER__?: IntersectionObserver;
-    __KORIVA_REGISTRY__?: Map<string, {
-      el: HTMLElement;
-      defaults: Record<string, unknown>;
-      meta?: { section?: string; label?: string; type?: string };
-    }>;
+    __KORIVA_REGISTRY__?: Map<
+      string,
+      {
+        el?: HTMLElement;
+        defaults: Record<string, unknown>;
+        meta?: { section?: string; label?: string; type?: string };
+      }
+    >;
   }
 }
 
@@ -33,8 +36,8 @@ export interface KorivaElementPayload {
   letterSpacing?: number;
   lineHeight?: number;
   visibleMobile?: boolean;
-  focalX?: number;   // 0-100 — image focal point horizontal
-  focalY?: number;   // 0-100 — image focal point vertical
+  focalX?: number; // 0-100 — image focal point horizontal
+  focalY?: number; // 0-100 — image focal point vertical
   animation?: string; // 'none' | 'fade' | 'slide-left' | 'slide-right' | 'zoom' | 'slide-up'
   sectionBg?: string; // for KORIVA_CUSTOMIZE section backgrounds
 }
@@ -156,41 +159,50 @@ export function KorivaLivePreview() {
           });
         }
         // section_video_backgrounds — inject/remove <video> elements per section
-        if ((p as any).section_video_backgrounds && typeof (p as any).section_video_backgrounds === 'object') {
-          Object.entries((p as any).section_video_backgrounds as Record<string, string>).forEach(([sectionId, url]) => {
-            const sectionEl = (
-              document.getElementById(sectionId) ||
+        if (
+          (p as any).section_video_backgrounds &&
+          typeof (p as any).section_video_backgrounds === "object"
+        ) {
+          Object.entries(
+            (p as any).section_video_backgrounds as Record<string, string>,
+          ).forEach(([sectionId, url]) => {
+            const sectionEl = (document.getElementById(sectionId) ||
               document.querySelector(`[data-section="${sectionId}"]`) ||
-              document.querySelector(`section.${sectionId}`)
-            ) as HTMLElement | null;
+              document.querySelector(
+                `section.${sectionId}`,
+              )) as HTMLElement | null;
             if (!sectionEl) return;
             // Remove existing video bg if any
-            const existing = sectionEl.querySelector('.koriva-video-bg') as HTMLElement | null;
+            const existing = sectionEl.querySelector(
+              ".koriva-video-bg",
+            ) as HTMLElement | null;
             if (existing) existing.remove();
             if (!url) return;
             // Ensure section can contain absolute-positioned children
             const pos = window.getComputedStyle(sectionEl).position;
-            if (pos === 'static') sectionEl.style.position = 'relative';
-            sectionEl.style.overflow = 'hidden';
+            if (pos === "static") sectionEl.style.position = "relative";
+            sectionEl.style.overflow = "hidden";
             // Create video element
-            const wrapper = document.createElement('div');
-            wrapper.className = 'koriva-video-bg';
-            wrapper.style.cssText = 'position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;';
-            const video = document.createElement('video');
+            const wrapper = document.createElement("div");
+            wrapper.className = "koriva-video-bg";
+            wrapper.style.cssText =
+              "position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;";
+            const video = document.createElement("video");
             video.src = url;
             video.autoplay = true;
             video.muted = true;
             video.loop = true;
             video.playsInline = true;
-            video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
+            video.style.cssText =
+              "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;";
             wrapper.appendChild(video);
             sectionEl.insertBefore(wrapper, sectionEl.firstChild);
             // Ensure section content sits above video
             Array.from(sectionEl.children).forEach((child) => {
               const c = child as HTMLElement;
-              if (!c.classList.contains('koriva-video-bg')) {
-                c.style.position = 'relative';
-                c.style.zIndex = '1';
+              if (!c.classList.contains("koriva-video-bg")) {
+                c.style.position = "relative";
+                c.style.zIndex = "1";
               }
             });
           });
@@ -267,6 +279,21 @@ export function KorivaLivePreview() {
                   defaults: data.defaults,
                 }),
               );
+              // 2. Fallback: scan DOM for [data-cg-el] elements not yet in registry
+              const domEls = document.querySelectorAll("[data-cg-el]");
+              const fromDom: typeof elements[0][] = [];
+              domEls.forEach((el) => {
+                const id = el.getAttribute("data-cg-el")!;
+                if (elements.find((e) => e.id === id)) return; // already from registry
+                fromDom.push({
+                  id,
+                  section: id.split("_")[0].charAt(0).toUpperCase() + id.split("_")[0].slice(1),
+                  label: id.replace(/^[^_]+_/, "").replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+                  type: el.tagName === "IMG" || el.getAttribute("data-type") === "image" ? "image" : "text",
+                  defaults: { content: el.textContent?.trim() || "" },
+                });
+              });
+              const allElements = [...elements, ...fromDom];
               const templateId =
                 document.documentElement.dataset.templateId ?? "unknown";
               const templateVersion =
@@ -276,7 +303,7 @@ export function KorivaLivePreview() {
                   type: "KORIVA_MANIFEST",
                   templateId,
                   templateVersion,
-                  elements,
+                  elements: allElements,
                 },
                 "*",
               );
@@ -375,7 +402,11 @@ export function KorivaLivePreview() {
           } else {
             root.style.setProperty(`--cg-el-${id}-content`, content);
             // Direct text mutation — works without useKorivaElement (stubs)
-            if (cgEl && cgEl.tagName !== "INPUT" && cgEl.tagName !== "TEXTAREA") {
+            if (
+              cgEl &&
+              cgEl.tagName !== "INPUT" &&
+              cgEl.tagName !== "TEXTAREA"
+            ) {
               cgEl.textContent = content;
             }
           }
@@ -490,16 +521,22 @@ export function KorivaLivePreview() {
         // Hide on mobile
         if (visibleMobile !== undefined && cgEl) {
           if (visibleMobile === false) {
-            cgEl.classList.add('k-hide-mobile');
+            cgEl.classList.add("k-hide-mobile");
           } else {
-            cgEl.classList.remove('k-hide-mobile');
+            cgEl.classList.remove("k-hide-mobile");
           }
         }
         // Scroll animation
         if (animation !== undefined && cgEl) {
-          cgEl.classList.remove('k-anim-fade', 'k-anim-slide-left', 'k-anim-slide-right', 'k-anim-zoom', 'k-anim-slide-up');
-          cgEl.classList.remove('k-anim-done');
-          if (animation && animation !== 'none') {
+          cgEl.classList.remove(
+            "k-anim-fade",
+            "k-anim-slide-left",
+            "k-anim-slide-right",
+            "k-anim-zoom",
+            "k-anim-slide-up",
+          );
+          cgEl.classList.remove("k-anim-done");
+          if (animation && animation !== "none") {
             cgEl.classList.add(`k-anim-${animation}`);
             if (window.__KORIVA_ANIM_OBSERVER__) {
               window.__KORIVA_ANIM_OBSERVER__.unobserve(cgEl);
