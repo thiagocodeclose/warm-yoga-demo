@@ -599,16 +599,16 @@ export default function WarmPage() {
             <div className="wm-hero-tag">
               {ICONS.fire} Infrared-Heated Yoga
             </div>
-            <h1 data-cg-el="hero_headline_1" className="wm-hero-title">
+            <h1 data-cg-el="hero_headline_1" className="wm-hero-title" style={{ fontSize: 'var(--cg-el-hero_headline_1-size, clamp(2.8rem, 5vw, 4.2rem))' }}>
               Feel the <em>heat.</em><br />
               Find yourself.
             </h1>
-            <p data-cg-el="hero_subtitle" className="wm-hero-sub">
+            <p data-cg-el="hero_subtitle" className="wm-hero-sub" style={{ fontSize: 'var(--cg-el-hero_subtitle-size, 1.05rem)' }}>
               Warm Studio brings together the ancient power of yoga and modern infrared heat technology — for deeper flexibility, real detoxification, and a practice that transforms more than just your body.
             </p>
             <div className="wm-hero-actions">
-              <a data-cg-el="hero_cta_primary" href="#pricing" className="wm-btn-primary">Try Your First Class</a>
-              <a data-cg-el="hero_cta_secondary" href="#classes" className="wm-btn-outline">See Schedule</a>
+              <a data-cg-el="hero_cta_primary" href="#pricing" className="wm-btn-primary" style={{ fontSize: 'var(--cg-el-hero_cta_primary-size, 0.9rem)' }}>Try Your First Class</a>
+              <a data-cg-el="hero_cta_secondary" href="#classes" className="wm-btn-outline" style={{ fontSize: 'var(--cg-el-hero_cta_secondary-size, 0.9rem)' }}>See Schedule</a>
             </div>
             <div className="wm-heat-row">
               {siteData.stats.map((s) => (

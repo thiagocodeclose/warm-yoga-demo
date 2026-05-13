@@ -1,6 +1,6 @@
 2:I[9107,[],"ClientPageRoot"]
-3:I[552,["931","static/chunks/app/page-40479e1a39864ef9.js"],"default",1]
-0:["G7VGDxIhZWF5MjiNRQ3pN",[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",{"children":["__PAGE__",{},[["$L1",["$","$L2",null,{"props":{"params":{},"searchParams":{}},"Component":"$3"}],null],null],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/bec96f75702118f4.css","precedence":"next","crossOrigin":"$undefined"}]],"$L4"],null],null],["$L5",null]]]]
+3:I[552,["931","static/chunks/app/page-48058953acae3a73.js"],"default",1]
+0:["22wJsjVJDPNsflSur67it",[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",{"children":["__PAGE__",{},[["$L1",["$","$L2",null,{"props":{"params":{},"searchParams":{}},"Component":"$3"}],null],null],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/bec96f75702118f4.css","precedence":"next","crossOrigin":"$undefined"}]],"$L4"],null],null],["$L5",null]]]]
 5:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"Warm Studio — Hot Yoga & Infrared"}],["$","meta","3",{"name":"description","content":"Infrared-heated yoga studio in Scottsdale. Hot Vinyasa, Yin, Power, Sculpt & Restore classes. Experience the warmth."}],["$","meta","4",{"name":"next-size-adjust"}]]
 1:null
 6:I[4707,[],""]
